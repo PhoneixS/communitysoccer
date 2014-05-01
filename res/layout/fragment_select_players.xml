@@ -24,7 +24,7 @@
             android:text="@string/cancel" />
 
         <Button
-            android:id="@+id/btnAceptar"
+            android:id="@+id/btnAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

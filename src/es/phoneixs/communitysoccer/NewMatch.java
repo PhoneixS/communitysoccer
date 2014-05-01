@@ -1,6 +1,7 @@
 package es.phoneixs.communitysoccer;
 
 import java.text.DateFormat;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 
@@ -11,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -96,31 +98,27 @@ public class NewMatch extends ActionBarActivity {
 			
 			return rootView;
 		}
-		
-		
-	}
 	
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		@Override
+		public void onActivityResult(int requestCode, int resultCode, Intent data) {
+			
+			Log.d("NewMatch", "Return from result: RQ=" + requestCode + ", RS=" + resultCode);
+			
+		    // If the request went well (OK) and the request was PICK_CONTACT_REQUEST
+		    if (resultCode == Activity.RESULT_OK && requestCode == PICK_USERS_REQUEST) {
+		    	
+		        // Perform a query to the contact's content provider for the contact's name
+		    	
+		    	// XXX TE HAS QUEDADO AQUÍ
+		    	
+		        int selectedPlayers[] = data.getIntArrayExtra(SelectPlayers.ALREADY_SELECTED);
+		        
+		        Log.d("NewMatch", "Selected players: " + Arrays.toString(selectedPlayers));
+		        
+		    }
+		    
+		}
 		
-	    // If the request went well (OK) and the request was PICK_CONTACT_REQUEST
-	    if (resultCode == Activity.RESULT_OK && requestCode == PICK_USERS_REQUEST) {
-	    	
-	        // Perform a query to the contact's content provider for the contact's name
-	    	
-	    	// XXX TE HAS QUEDADO AQUÍ
-	    	/*
-	        Cursor cursor = getContentResolver().query(data.getData(),
-	        new String[] {Contacts.DISPLAY_NAME}, null, null, null);
-	        if (cursor.moveToFirst()) { // True if the cursor is not empty
-	            int columnIndex = cursor.getColumnIndex(Contacts.DISPLAY_NAME);
-	            String name = cursor.getString(columnIndex);
-	            // Do something with the selected contact's name...
-	        }
-	        */
-	        
-	    }
-	    
 	}
 
 }
