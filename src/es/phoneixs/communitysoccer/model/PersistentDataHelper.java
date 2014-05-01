@@ -31,7 +31,7 @@ public class PersistentDataHelper extends SQLiteOpenHelper {
 
 	private static final String CREATE_COMMUNITIES_TABLE = "CREATE TABLE "
 			+ COMMUNITIES_TABLE_NAME + " (" + COMMUNITIES_COLUMN_ID
-			+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + COMMUNITIES_COLUMN_NAME
+			+ " INTEGER PRIMARY KEY, " + COMMUNITIES_COLUMN_NAME
 			+ " TEXT);";
 
 	/*
@@ -46,7 +46,7 @@ public class PersistentDataHelper extends SQLiteOpenHelper {
 
 	private static final String CREATE_USERS_TABLE = "CREATE TABLE "
 			+ USERS_TABLE_NAME + " (" + USERS_COLUMN_ID
-			+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + USERS_COLUMN_NAME
+			+ " INTEGER PRIMARY KEY, " + USERS_COLUMN_NAME
 			+ " TEXT);";
 
 	/*
@@ -99,9 +99,9 @@ public class PersistentDataHelper extends SQLiteOpenHelper {
 
 	private static final String CREATE_MATCHS_TABLE = "CREATE TABLE "
 			+ MATCHS_TABLE_NAME + " (" + MATCHS_COLUMN_ID
-			+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + MATCHS_COLUMN_DATE
+			+ " INTEGER PRIMARY KEY, " + MATCHS_COLUMN_DATE
 			+ " INTEGER NOT NULL, " + MATCHS_COLUMN_COMMUNITY
-			+ " INTEGER NOT NULL, FREIGN KEY (" + MATCHS_COLUMN_COMMUNITY
+			+ " INTEGER NOT NULL, FOREIGN KEY (" + MATCHS_COLUMN_COMMUNITY
 			+ ") REFERENCES " + COMMUNITIES_TABLE_NAME + " ("
 			+ COMMUNITIES_COLUMN_ID + "))";
 
@@ -130,7 +130,7 @@ public class PersistentDataHelper extends SQLiteOpenHelper {
 	
 	private static final String CREATE_MATCHS_DATA_TABLE = "CREATE TABLE " + MATCHS_DATA_TABLE_NAME +
 			" (" + MATCHS_DATA_COLUMN_ID +
-			" INTEGER PRIMARY KEY AUTOINCREMENT, " + MATCHS_DATA_COLUMN_MATCH + " INTEGER NOT NULL, " +
+			" INTEGER PRIMARY KEY, " + MATCHS_DATA_COLUMN_MATCH + " INTEGER NOT NULL, " +
 			MATCHS_DATA_COLUMN_PLAYER + " INTEGER NOT NULL, " +
 			MATCHS_DATA_COLUMN_HOME + " BOOLEAN DEFAULT 0, " +
 			MATCHS_DATA_COLUMN_GOALS + " INTEGER DEFAULT 0, " +
@@ -140,11 +140,11 @@ public class PersistentDataHelper extends SQLiteOpenHelper {
 			", " + MATCHS_DATA_COLUMN_PLAYER +
 			")," +
 			" FOREIGN KEY (" + MATCHS_DATA_COLUMN_MATCH +
-			") " + MATCHS_TABLE_NAME +
+			") REFERENCES " + MATCHS_TABLE_NAME +
 			" (" + MATCHS_COLUMN_ID +
 			"), " +
 			" FOREIGN KEY (" + MATCHS_DATA_COLUMN_PLAYER +
-			") " + USERS_TABLE_NAME +
+			") REFERENCES " + USERS_TABLE_NAME +
 			" (" + USERS_COLUMN_ID +
 			")"
 			+ ")";
@@ -190,6 +190,7 @@ public class PersistentDataHelper extends SQLiteOpenHelper {
 		insertInitialData(db);
 
 	}
+	
 
 	/*
 	 * (non-Javadoc)
@@ -201,7 +202,7 @@ public class PersistentDataHelper extends SQLiteOpenHelper {
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	private void insertInitialData(SQLiteDatabase db) {
@@ -219,8 +220,18 @@ public class PersistentDataHelper extends SQLiteOpenHelper {
 		db.insert(PersistentDataHelper.USERS_TABLE_NAME, null, values);
 
 		values.clear();
+		
+		values.put(PersistentDataHelper.USERS_COLUMN_NAME, "Patricia");
+		db.insert(PersistentDataHelper.USERS_TABLE_NAME, null, values);
+
+		values.clear();
 
 		values.put(PersistentDataHelper.USERS_COLUMN_NAME, "Benito");
+		db.insert(PersistentDataHelper.USERS_TABLE_NAME, null, values);
+
+		values.clear();
+		
+		values.put(PersistentDataHelper.USERS_COLUMN_NAME, "Rosado");
 		db.insert(PersistentDataHelper.USERS_TABLE_NAME, null, values);
 
 		values.clear();

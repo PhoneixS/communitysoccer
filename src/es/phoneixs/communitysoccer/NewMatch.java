@@ -1,13 +1,13 @@
 package es.phoneixs.communitysoccer;
 
 import java.text.DateFormat;
+import java.util.Collections;
 import java.util.Date;
 
 import es.phoneixs.communitysoccer.R;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ShareCompat.IntentBuilder;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +16,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 public class NewMatch extends ActionBarActivity {
@@ -80,6 +79,14 @@ public class NewMatch extends ActionBarActivity {
 				public void onClick(View v) {
 					
 					Intent intent = new Intent(getActivity(), SelectPlayers.class);
+					
+					int selectedPlayers[] = {}; // TODO Get players that are already added to the team.
+					
+					intent.putExtra(SelectPlayers.ALREADY_SELECTED, selectedPlayers);
+					
+					int disabledPlayers[] = {}; // TODO Get players that are already added in other team.
+					
+					intent.putExtra(SelectPlayers.DISABLED_PLAYERS, disabledPlayers);
 					
 					startActivityForResult(intent, PICK_USERS_REQUEST);
 					
