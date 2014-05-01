@@ -2,6 +2,7 @@ package es.phoneixs.communitysoccer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,11 +35,18 @@ import es.phoneixs.communitysoccer.model.PersistentDataHelper;
 public class SelectPlayers extends ActionBarActivity {
 
 	/**
-	 * Indicate that the parameter is about the already selected players.
+	 * Indicate that the parameter is about the already selected players ids.
 	 * 
 	 * @since 20140501
 	 */
-	protected static final String ALREADY_SELECTED = "es.phoneixs.communitysoccer.ALREADY_SELECTED";
+	protected static final String SELECTED_IDS = "es.phoneixs.communitysoccer.ALREADY_SELECTED";
+	
+	/**
+	 * Indicate that the parameter is about the already selected players names.
+	 * 
+	 * @since 20140501
+	 */
+	protected static final String SELECTED_NAMES = "es.phoneixs.communitysoccer.SELECTED_NAMES";
 
 	/**
 	 * Indicate that the parameter is about players that must be show as
@@ -127,12 +135,12 @@ public class SelectPlayers extends ActionBarActivity {
 					.findViewById(R.id.llVerticalList);
 
 			// Get what must be already selected
-			int selectedPlayers[] = originalIntent.getIntArrayExtra(ALREADY_SELECTED);
-			Arrays.sort(selectedPlayers);
+			ArrayList<Integer> selectedPlayers = originalIntent.getIntegerArrayListExtra(SELECTED_IDS);
+			Collections.sort(selectedPlayers);
 
 			// And what must be disabled.
-			int disabledPlayers[] = originalIntent.getIntArrayExtra(DISABLED_PLAYERS);
-			Arrays.sort(disabledPlayers);
+			ArrayList<Integer> disabledPlayers = originalIntent.getIntegerArrayListExtra(DISABLED_PLAYERS);
+			Collections.sort(disabledPlayers);
 
 			PersistentDataHelper pdh = new PersistentDataHelper(activity);
 
@@ -156,13 +164,13 @@ public class SelectPlayers extends ActionBarActivity {
 
 					cb.setText(name);
 
-					if (Arrays.binarySearch(selectedPlayers, id) >= 0) {
+					if (Collections.binarySearch(selectedPlayers, id) >= 0) {
 
 						cb.setChecked(true);
 
 					}
 
-					if (Arrays.binarySearch(disabledPlayers, id) >= 0) {
+					if (Collections.binarySearch(disabledPlayers, id) >= 0) {
 
 						cb.setEnabled(false);
 
@@ -189,7 +197,8 @@ public class SelectPlayers extends ActionBarActivity {
 
 			// Check what users have been selected.
 
-			List<Integer> selectedUsers = new ArrayList<Integer>();
+			ArrayList<Integer> selectedUsers = new ArrayList<Integer>();
+			ArrayList<String> selectedNames = new ArrayList<String>();
 
 			for (Entry<CheckBox, Integer> userInfo : this.checkBox2UserId
 					.entrySet()) {
@@ -198,18 +207,9 @@ public class SelectPlayers extends ActionBarActivity {
 						&& userInfo.getKey().isEnabled()) {
 
 					selectedUsers.add(userInfo.getValue());
+					selectedNames.add(userInfo.getKey().getText().toString());
 
 				}
-
-			}
-
-			// Convert the list of players to an array of int.
-
-			int values[] = new int[selectedUsers.size()];
-
-			for (int i = 0; i < selectedUsers.size(); i++) {
-
-				values[i] = selectedUsers.get(i);
 
 			}
 
@@ -217,7 +217,9 @@ public class SelectPlayers extends ActionBarActivity {
 
 			Intent resultIntent = new Intent();
 
-			resultIntent.putExtra(SelectPlayers.ALREADY_SELECTED, values);
+			resultIntent.putIntegerArrayListExtra(SelectPlayers.SELECTED_IDS, selectedUsers);
+			
+			resultIntent.putStringArrayListExtra(SelectPlayers.SELECTED_NAMES, selectedNames);
 
 			activity.setResult(RESULT_OK, resultIntent);
 

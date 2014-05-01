@@ -1,6 +1,7 @@
 package es.phoneixs.communitysoccer;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
@@ -82,13 +83,13 @@ public class NewMatch extends ActionBarActivity {
 					
 					Intent intent = new Intent(getActivity(), SelectPlayers.class);
 					
-					int selectedPlayers[] = {}; // TODO Get players that are already added to the team.
+					ArrayList<Integer> selectedPlayers = new ArrayList<Integer>(); // TODO Get players that are already added to the team.
 					
-					intent.putExtra(SelectPlayers.ALREADY_SELECTED, selectedPlayers);
+					intent.putIntegerArrayListExtra(SelectPlayers.SELECTED_IDS, selectedPlayers);
 					
-					int disabledPlayers[] = {}; // TODO Get players that are already added in other team.
+					ArrayList<Integer> disabledPlayers = new ArrayList<Integer>(); // TODO Get players that are already added in other team.
 					
-					intent.putExtra(SelectPlayers.DISABLED_PLAYERS, disabledPlayers);
+					intent.putIntegerArrayListExtra(SelectPlayers.DISABLED_PLAYERS, disabledPlayers);
 					
 					startActivityForResult(intent, PICK_USERS_REQUEST);
 					
@@ -111,9 +112,14 @@ public class NewMatch extends ActionBarActivity {
 		    	
 		    	// XXX TE HAS QUEDADO AQUÍ
 		    	
-		        int selectedPlayers[] = data.getIntArrayExtra(SelectPlayers.ALREADY_SELECTED);
+		        ArrayList<Integer> selectedPlayersIds = data.getIntegerArrayListExtra(SelectPlayers.SELECTED_IDS);
+		        ArrayList<String> selectedPlayersNames = data.getStringArrayListExtra(SelectPlayers.SELECTED_NAMES);
 		        
-		        Log.d("NewMatch", "Selected players: " + Arrays.toString(selectedPlayers));
+		        
+		        Log.d("NewMatch", "Selected players IDs: " + selectedPlayersIds.toString());
+		        Log.d("NewMatch", "Selected players Names: " + selectedPlayersNames.toString());
+		        
+		        
 		        
 		    }
 		    
