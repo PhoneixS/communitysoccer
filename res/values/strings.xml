@@ -24,5 +24,13 @@
     <string name="title_activity_select_players">Select players</string>
     <string name="add_selected">Add Selected</string>
     <string name="cancel">Cancel</string>
+    <string name="temp_text">Temporal text</string>
+    <string name="goals">Goals</string>
+    <string name="yellow_cards">Yellow cards</string>
+    <string name="red_cards">Red cards</string>
+    <string name="player_name">Player name</string>
+    <string name="set_selected">Set selected</string>
+    <string name="set_home_players">Set home players</string>
+    <string name="set_visitor_players">Set visitor_players</string>
 
 </resources>

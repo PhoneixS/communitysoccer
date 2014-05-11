@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/es.phoneixs.communitysoccer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:columnCount="4"
+    app:rowCount="1"
+    app:useDefaultMargins="true"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_weight="2"
+        app:layout_column="0"
+        app:layout_row="0"
+        app:layout_gravity="left"
+        android:text="@string/player_name"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/goals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/goals"
+        android:textStyle="bold"
+        app:layout_column="1"
+        app:layout_row="0"
+        app:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/yellowCards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/yellow_cards"
+        android:textStyle="bold"
+        app:layout_column="2"
+        app:layout_row="0"
+        app:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/redCards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:layout_column="3"
+        app:layout_gravity="center"
+        app:layout_row="0"
+        android:text="@string/red_cards"
+        android:textStyle="bold" />
+
+</merge>

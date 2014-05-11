@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/es.phoneixs.communitysoccer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:columnCount="4"
+    app:rowCount="1"
+    app:useDefaultMargins="true"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/temp_text"
+        app:layout_column="0"
+        app:layout_gravity="left"
+         />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/goals"
+        android:inputType="number"
+        app:layout_column="1"
+        app:layout_gravity="center" >
+
+    </EditText>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/yellow_cards"
+        android:inputType="number"
+        app:layout_column="2"
+        app:layout_gravity="center" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/red_cards"
+        android:inputType="number"
+        app:layout_column="3"
+        app:layout_gravity="center" />
+
+</merge>

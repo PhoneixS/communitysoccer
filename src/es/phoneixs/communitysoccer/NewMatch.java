@@ -1,29 +1,17 @@
 package es.phoneixs.communitysoccer;
 
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Date;
-
 import es.phoneixs.communitysoccer.R;
 
 import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.Fragment;
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 public class NewMatch extends ActionBarActivity {
 
-	private static final int PICK_USERS_REQUEST = 0;
+	static final int PICK_HOME_PLAYERS_REQUEST = 0;
+
+	static final int PICK_VISITOR_PLAYERS_REQUEST = 1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +20,7 @@ public class NewMatch extends ActionBarActivity {
 
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
+					.add(R.id.container, new NewMatchFragment()).commit();
 		}
 	}
 
@@ -54,77 +42,6 @@ public class NewMatch extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
-	}
-
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-	public static class PlaceholderFragment extends Fragment {
-
-		public PlaceholderFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_new_match,
-					container, false);
-			
-			String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
-			
-			TextView tvDate = (TextView) rootView.findViewById(R.id.tvDate);
-			
-			tvDate.setText(currentDateTimeString);
-			
-			rootView.findViewById(R.id.btnAddHomePlayer).setOnClickListener(new View.OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					
-					Intent intent = new Intent(getActivity(), SelectPlayers.class);
-					
-					ArrayList<Integer> selectedPlayers = new ArrayList<Integer>(); // TODO Get players that are already added to the team.
-					
-					intent.putIntegerArrayListExtra(SelectPlayers.SELECTED_IDS, selectedPlayers);
-					
-					ArrayList<Integer> disabledPlayers = new ArrayList<Integer>(); // TODO Get players that are already added in other team.
-					
-					intent.putIntegerArrayListExtra(SelectPlayers.DISABLED_PLAYERS, disabledPlayers);
-					
-					startActivityForResult(intent, PICK_USERS_REQUEST);
-					
-					
-				}
-			});
-			
-			return rootView;
-		}
-	
-		@Override
-		public void onActivityResult(int requestCode, int resultCode, Intent data) {
-			
-			Log.d("NewMatch", "Return from result: RQ=" + requestCode + ", RS=" + resultCode);
-			
-		    // If the request went well (OK) and the request was PICK_CONTACT_REQUEST
-		    if (resultCode == Activity.RESULT_OK && requestCode == PICK_USERS_REQUEST) {
-		    	
-		        // Perform a query to the contact's content provider for the contact's name
-		    	
-		    	// XXX TE HAS QUEDADO AQUÍ
-		    	
-		        ArrayList<Integer> selectedPlayersIds = data.getIntegerArrayListExtra(SelectPlayers.SELECTED_IDS);
-		        ArrayList<String> selectedPlayersNames = data.getStringArrayListExtra(SelectPlayers.SELECTED_NAMES);
-		        
-		        
-		        Log.d("NewMatch", "Selected players IDs: " + selectedPlayersIds.toString());
-		        Log.d("NewMatch", "Selected players Names: " + selectedPlayersNames.toString());
-		        
-		        
-		        
-		    }
-		    
-		}
-		
 	}
 
 }

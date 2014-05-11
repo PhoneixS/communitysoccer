@@ -1,9 +1,8 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/llVerticalList"
+    xmlns:app="http://schemas.android.com/apk/res/es.phoneixs.communitysoccer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -11,85 +10,136 @@
     tools:context="es.phoneixs.communitysoccer.NewMatch$PlaceholderFragment" >
 
     <LinearLayout
+        android:id="@+id/llVerticalList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/tvDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/chage_match_date" />
-
-        <Button
-            android:id="@+id/btnChangeDateTime"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/change_date_time" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/llHome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/tvHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:text="@string/home_players"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/btnAddHomePlayer"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add_home_player" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/tvNoHomePlayers"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/no_home_players" />
-    
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp"
-        android:background="@android:color/darker_gray" />
-    
-    <LinearLayout
-        android:id="@+id/llVisitors"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:orientation="vertical" >
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chage_match_date" />
+
+            <Button
+                android:id="@+id/btnChangeDateTime"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/change_date_time" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="@string/home_players"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnAddHomePlayer"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/set_home_players" />
+        </LinearLayout>
+        
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+	        <android.support.v7.widget.GridLayout
+	            xmlns:android="http://schemas.android.com/apk/res/android"
+	            xmlns:app="http://schemas.android.com/apk/res/es.phoneixs.communitysoccer"
+	            android:id="@+id/llHomePlayers"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            app:columnCount="4"
+	            app:rowCount="2"
+	            app:useDefaultMargins="true" >
+	
+	            <include layout="@layout/header_players" />
+	            
+	        </android.support.v7.widget.GridLayout>
+        
+        </HorizontalScrollView >
+        
         <TextView
-            android:id="@+id/tvVisitor"
+            android:id="@+id/tvNoHomePlayers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:text="@string/visitor_players"
-            android:textStyle="bold" />
+            android:layout_gravity="center_horizontal"
+            app:layout_column="0"
+            app:layout_columnSpan="4"
+            app:layout_row="1"
+            android:text="@string/no_home_players" />
 
-        <Button
-            android:id="@+id/btnAddVisitorPlayer"
-            style="?android:attr/buttonStyleSmall"
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:id="@+id/llVisitors"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvVisitor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="@string/visitor_players"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnAddVisitorPlayer"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/set_visitor_players" />
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        
+	        <android.support.v7.widget.GridLayout
+	            xmlns:android="http://schemas.android.com/apk/res/android"
+	            xmlns:app="http://schemas.android.com/apk/res/es.phoneixs.communitysoccer"
+	            android:id="@+id/llVisitorPlayers"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            app:columnCount="4"
+	            app:rowCount="2"
+	            app:useDefaultMargins="true" >
+	
+	            <include layout="@layout/header_players" />
+	            
+	        </android.support.v7.widget.GridLayout>
+        
+        </HorizontalScrollView>
+        
+        <TextView
+            android:id="@+id/tvNoVisitorPlayers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/add_visitor_player" />
-
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:text="@string/no_home_players" />
+        
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvNoVisitorPlayers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/no_visitors_players" />
-
-</LinearLayout>
+</ScrollView>
