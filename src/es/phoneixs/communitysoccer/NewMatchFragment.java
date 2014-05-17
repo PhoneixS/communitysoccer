@@ -251,14 +251,27 @@ public class NewMatchFragment extends Fragment {
 			LayoutInflater inflater = LayoutInflater.from(this.getActivity());
 			
 			playersLayout.setRowCount(1+playersNames.size());
+			
+			int id = 0;
 
 			for (String name : playersNames) {
 
 				inflater.inflate(R.layout.player_in_match, playersLayout, true);
 				
 				TextView tvName = (TextView) playersLayout.getChildAt(playersLayout.getChildCount() - 4);
+				
+				tvName.setId(id++);
 
 				tvName.setText(name);
+				
+				View v = playersLayout.getChildAt(playersLayout.getChildCount() - 3);
+				v.setId(id++);
+				
+				v = playersLayout.getChildAt(playersLayout.getChildCount() - 2);
+				v.setId(id++);
+				
+				v = playersLayout.getChildAt(playersLayout.getChildCount() - 1);
+				v.setId(id++);
 
 			}
 
