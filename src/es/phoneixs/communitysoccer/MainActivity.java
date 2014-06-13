@@ -49,6 +49,18 @@ public class MainActivity extends Activity {
 			}
 		});
 		
+		findViewById(R.id.btnViewStatistics).setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				// Start the statistics menu activity.
+				Intent statisticsIntent = new Intent(MainActivity.this, StatisticsMainActivity.class);
+				startActivity(statisticsIntent);
+				
+			}
+		});
+		
 	}
 	
 	

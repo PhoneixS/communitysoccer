@@ -34,5 +34,13 @@
     <string name="set_visitor_players">Set visitor_players</string>
     <string name="save_match">Save match</string>
     <string name="match_saved">Match saved</string>
+    <string name="title_activity_statistics_main">Statistics</string>
+    <string name="by_players">By players</string>
+    <string name="rankings">Rankings</string>
+    <string name="awards">Awards</string>
+    <string name="title_activity_statistics_by_player">StatisticsByPlayerActivity</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
 
 </resources>

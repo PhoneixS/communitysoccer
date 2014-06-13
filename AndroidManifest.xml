@@ -34,6 +34,22 @@
             android:name="es.phoneixs.communitysoccer.SelectPlayers"
             android:label="@string/title_activity_select_players" >
         </activity>
+        <activity
+            android:name="es.phoneixs.communitysoccer.StatisticsMainActivity"
+            android:label="@string/title_activity_statistics_main"
+            android:parentActivityName="es.phoneixs.communitysoccer.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="es.phoneixs.communitysoccer.MainActivity" />
+        </activity>
+        <activity
+            android:name="es.phoneixs.communitysoccer.StatisticsByPlayerActivity"
+            android:label="@string/title_activity_statistics_by_player"
+            android:parentActivityName="es.phoneixs.communitysoccer.StatisticsMainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="es.phoneixs.communitysoccer.StatisticsMainActivity" />
+        </activity>
     </application>
 
 </manifest>
