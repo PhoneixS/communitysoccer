@@ -50,6 +50,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="es.phoneixs.communitysoccer.StatisticsMainActivity" />
         </activity>
+        <activity
+            android:name="es.phoneixs.communitysoccer.RankingsActivity"
+            android:label="@string/title_activity_rankings"
+            android:parentActivityName="es.phoneixs.communitysoccer.StatisticsMainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="es.phoneixs.communitysoccer.StatisticsMainActivity" />
+        </activity>
+        <activity
+            android:name="es.phoneixs.communitysoccer.RankingByScoreActivity"
+            android:label="@string/title_activity_ranking_by_score"
+            android:parentActivityName="es.phoneixs.communitysoccer.RankingsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="es.phoneixs.communitysoccer.RankingsActivity" />
+        </activity>
     </application>
 
 </manifest>

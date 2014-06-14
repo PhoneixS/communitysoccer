@@ -1,13 +1,10 @@
-/**
- * 
- */
 package es.phoneixs.communitysoccer.model;
 
-import es.phoneixs.communitysoccer.R;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import es.phoneixs.communitysoccer.R;
 
 /**
  * @author Javier Alfonso <phoneixsegovia@gmail.com>
@@ -15,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class PersistentDataHelper extends SQLiteOpenHelper {
 
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 
 	private static final String DATABASE_NAME = "MOC_DATA";
 
@@ -148,6 +145,28 @@ public class PersistentDataHelper extends SQLiteOpenHelper {
 			" (" + USERS_COLUMN_ID +
 			")"
 			+ ")";
+	
+	public static final String MATCHS_RESULT_TABLE_NAME = "matchs_result";
+	
+	public static final String MATCHS_RESULT_COLUMN_MATCH = "match";
+	public static final String MATCHS_RESULT_COLUMN_HOMES_GOALS = "homes_goals";
+	public static final String MATCHS_RESULT_COLUMN_VISITORS_GOALS = "visitors_goals";
+	public static final String MATCHS_RESULT_COLUMN_WINNER = "winner";
+	
+	public static final int MATCHS_RESULT_WINNER_HOME = 1;
+	public static final int MATCHS_RESULT_WINNER_VISITOR = 2;
+	public static final int MATCHS_RESULT_WINNER_TIE = 3;
+	
+	private static final String HOME_GOALS_SQL_FRAGMENT = "total( CASE " + MATCHS_DATA_COLUMN_HOME + " WHEN 0 THEN 0 ELSE " + MATCHS_DATA_COLUMN_GOALS + " END )";
+	private static final String VISITOR_GOALS_SQL_FRAGMENT = "total( CASE " + MATCHS_DATA_COLUMN_HOME + " WHEN 0 THEN " + MATCHS_DATA_COLUMN_GOALS + " ELSE 0 END )";
+	
+	private static final String CREATE_VIEW_MATCHS_RESULT = "CREATE VIEW " + MATCHS_RESULT_TABLE_NAME +
+			" AS SELECT " + MATCHS_DATA_COLUMN_MATCH + " AS  " + MATCHS_RESULT_COLUMN_MATCH +
+			", " + HOME_GOALS_SQL_FRAGMENT + " AS " + MATCHS_RESULT_COLUMN_HOMES_GOALS +
+			", " + VISITOR_GOALS_SQL_FRAGMENT + " AS " + MATCHS_RESULT_COLUMN_VISITORS_GOALS +
+			", CASE WHEN " + HOME_GOALS_SQL_FRAGMENT + " > " + VISITOR_GOALS_SQL_FRAGMENT + " THEN " + MATCHS_RESULT_WINNER_HOME + " WHEN " + HOME_GOALS_SQL_FRAGMENT + " < " + VISITOR_GOALS_SQL_FRAGMENT + " THEN " + MATCHS_RESULT_WINNER_VISITOR + " ELSE " + MATCHS_RESULT_WINNER_TIE + " END AS " + MATCHS_RESULT_COLUMN_WINNER +
+			" FROM " + MATCHS_DATA_TABLE_NAME +
+			" GROUP BY " + MATCHS_DATA_COLUMN_MATCH;
 
 	/*
 	 * Properties of PersistentDataHelper.
@@ -186,6 +205,8 @@ public class PersistentDataHelper extends SQLiteOpenHelper {
 		db.execSQL(CREATE_MATCHS_TABLE);
 		
 		db.execSQL(CREATE_MATCHS_DATA_TABLE);
+				
+		db.execSQL(CREATE_VIEW_MATCHS_RESULT);
 
 		insertInitialData(db);
 
@@ -201,8 +222,12 @@ public class PersistentDataHelper extends SQLiteOpenHelper {
 	 */
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		// TODO Auto-generated method stub
-		
+
+		if (oldVersion == 1 && newVersion == 2) {
+			
+			db.execSQL(CREATE_VIEW_MATCHS_RESULT);
+			
+		}
 	}
 
 	private void insertInitialData(SQLiteDatabase db) {

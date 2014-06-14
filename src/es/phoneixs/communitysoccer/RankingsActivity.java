@@ -8,15 +8,15 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
-
-public class StatisticsMainActivity extends ActionBarActivity {
+public class RankingsActivity extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_statistics_main);
+		setContentView(R.layout.activity_rankings);
 
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
@@ -28,7 +28,7 @@ public class StatisticsMainActivity extends ActionBarActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.statistics_main, menu);
+		getMenuInflater().inflate(R.menu.rankings, menu);
 		return true;
 	}
 
@@ -47,7 +47,7 @@ public class StatisticsMainActivity extends ActionBarActivity {
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
-	public static class PlaceholderFragment extends Fragment {
+	public static class PlaceholderFragment extends Fragment implements OnClickListener {
 
 		public PlaceholderFragment() {
 		}
@@ -55,33 +55,33 @@ public class StatisticsMainActivity extends ActionBarActivity {
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_statistics_main,
+			View rootView = inflater.inflate(R.layout.fragment_rankings,
 					container, false);
 			
-			rootView.findViewById(R.id.btnByPlayers).setOnClickListener(new View.OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					
-					Intent byPlayerIntent = new Intent(getActivity(), StatisticsByPlayerActivity.class);
-					startActivity(byPlayerIntent);
-					
-				}
-			});
-			
-			rootView.findViewById(R.id.btnRankings).setOnClickListener(new View.OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					
-					Intent byPlayerIntent = new Intent(getActivity(), RankingsActivity.class);
-					startActivity(byPlayerIntent);
-					
-				}
-			});
+			rootView.findViewById(R.id.btnByScore).setOnClickListener(this);
 			
 			return rootView;
 		}
+		
+		public void onClick(View v) {
+			
+			Class<?> c = null;
+			
+			switch (v.getId()) {
+			case R.id.btnByScore:
+				c = RankingByScoreActivity.class;
+				break;
+
+			default:
+				return;
+			}
+			
+			Intent intent = new Intent(getActivity(), c);
+			
+			this.getActivity().startActivity(intent);
+			
+		}
+		
 	}
 
 }
