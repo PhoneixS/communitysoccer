@@ -48,5 +48,6 @@
     <string name="by_red_cards">By red cards</string>
     <string name="by_yellow_cards">By yellow cards</string>
     <string name="title_activity_ranking_by_score">RankingByScoreActivity</string>
+    <string name="title_activity_ranking_by_goals">RankingByGoalsActivity</string>
 
 </resources>

@@ -66,6 +66,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="es.phoneixs.communitysoccer.RankingsActivity" />
         </activity>
+        <activity
+            android:name="es.phoneixs.communitysoccer.RankingByGoalsActivity"
+            android:label="@string/title_activity_ranking_by_goals"
+            android:parentActivityName="es.phoneixs.communitysoccer.RankingsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="es.phoneixs.communitysoccer.RankingsActivity" />
+        </activity>
     </application>
 
 </manifest>
