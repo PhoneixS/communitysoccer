@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -82,8 +83,13 @@ public class RankingsActivity extends ActionBarActivity {
 			case R.id.btnByYellowCards:
 				c = RankingByYellowCardsActivity.class;
 				break;
+				
+			case R.id.btnByRedCards:
+				c = RankingByRedCardsActivity.class;
+				break;
 
 			default:
+				Log.w("rankings", "A button was pushed that we don't know what to do with it.");
 				return;
 			}
 			

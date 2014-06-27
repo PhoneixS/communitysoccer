@@ -10,7 +10,7 @@
     <string name="manage_people">Manage people</string>
     <string name="edit_community">Edit community</string>
     <string name="community_default_name">Default Community</string>
-    <string name="title_activity_new_match">NewMatch</string>
+    <string name="title_activity_new_match">New match</string>
     <string name="add_player">Add player</string>
     <string name="home_players">Home players</string>
     <string name="add_home_player">Add home player</string>
@@ -38,17 +38,18 @@
     <string name="by_players">By players</string>
     <string name="rankings">Rankings</string>
     <string name="awards">Awards</string>
-    <string name="title_activity_statistics_by_player">StatisticsByPlayerActivity</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
-    <string name="title_activity_rankings">RankingsActivity</string>
+    <string name="title_activity_statistics_by_player">Statistics by player</string>
+    <string name="title_section1">Here</string>
+    <string name="title_section2">Will be</string>
+    <string name="title_section3">Something</string>
+    <string name="title_activity_rankings">Rankings</string>
     <string name="by_score">By score</string>
     <string name="by_goals">By goals</string>
     <string name="by_red_cards">By red cards</string>
     <string name="by_yellow_cards">By yellow cards</string>
-    <string name="title_activity_ranking_by_score">RankingByScoreActivity</string>
-    <string name="title_activity_ranking_by_goals">RankingByGoalsActivity</string>
+    <string name="title_activity_ranking_by_score">Ranking by score</string>
+    <string name="title_activity_ranking_by_goals">Ranking by goals</string>
     <string name="title_activity_ranking_by_yellow_cards">Ranking by yellow cards</string>
+    <string name="title_activity_ranking_by_red_cards">Ranking by red cards</string>
 
 </resources>
