@@ -60,6 +60,8 @@ public class RankingsActivity extends ActionBarActivity {
 			
 			rootView.findViewById(R.id.btnByScore).setOnClickListener(this);
 			rootView.findViewById(R.id.btnByGoals).setOnClickListener(this);
+			rootView.findViewById(R.id.btnByYellowCards).setOnClickListener(this);
+			rootView.findViewById(R.id.btnByRedCards).setOnClickListener(this);
 			
 			return rootView;
 		}
@@ -75,6 +77,10 @@ public class RankingsActivity extends ActionBarActivity {
 				
 			case R.id.btnByGoals:
 				c = RankingByGoalsActivity.class;
+				break;
+				
+			case R.id.btnByYellowCards:
+				c = RankingByYellowCardsActivity.class;
 				break;
 
 			default:

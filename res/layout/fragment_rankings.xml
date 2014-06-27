@@ -23,15 +23,15 @@
         android:text="@string/by_goals" />
 
     <Button
-        android:id="@+id/btnByRedCards"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/by_red_cards" />
-
-    <Button
         android:id="@+id/btnByYellowCards"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/by_yellow_cards" />
+
+    <Button
+        android:id="@+id/btnByRedCards"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/by_red_cards" />
 
 </LinearLayout>

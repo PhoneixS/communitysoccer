@@ -19,20 +19,20 @@
     
     <Button
         android:id="@+id/btnByPlayers"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="@string/by_players" />
 
     <Button
         android:id="@+id/btnRankings"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/rankings" />
     
     <Button
         android:id="@+id/btnAwards"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/awards" />
 
